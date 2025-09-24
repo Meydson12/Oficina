@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+
+
+:root{
+    --color-ligth-50: #f8fafc;
+    --color-dark-50: #797984;
+    --color-dark-100: #312d37;
+    --color-dark-900: #000;
+
+    --color-purple-50: #7c3aed;
+    --color-purple-100: #a855f7;
+    --color-purple-200: #bf46ef;
+
+    --color-gradient: linear-gradient(90deg, var(--color-purple-50), var(--color-purple-100), var(--color-purple-200));
+
+}
+
+*{
+    font-family: 'crimson';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.container{
+    height: 100vh;
+    width: 100%;
+    background: var(--color-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#login_form{
+  background-color: var(--color-ligth-50);
+  display: flex;
+  flex-direction: column;
+  padding: 30px 40px;
+  border-radius: 8px;
+  gap: 30px;
+  box-shadow: 5px 5px 8px rgba(0,0,0,0.336);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.parte-cima{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.parte-cima h1{
+    font-size: 40px;
+    position: relative;
+
+}
+
+.parte-cima h1::before {
+    position: absolute;
+    content: '';
+    width: 40%;
+    background-color: var(--color-purple-50);
+    height: 3px;
+    bottom: 5px;
+    border-radius: 3px;
+
+}
+
+#mode_icon{
+    cursor: pointer;
+    font-size: 25px;
+}
+
+
+.campos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+}
+
+.input_box label{
+    font-size: 18px;
+    color: var(--color-dark-50);
+}
+
+.input_field{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 3px;
+    cursor: text;
+    border-bottom: 1px solid var(--color-purple-50);
+
+}
+
+.input_field input{
+    border: none;
+    background-color: transparent;
+    width: 260px;
+    font-size: 18px;
+    padding: 0px 5px;
+
+}
+
+.input_field input:focus{
+    outline: none;
+}
+
+#login_button{
+    border: none;
+    background: var(--color-gradient);
+    color: var(--color-ligth-50);
+    padding: 7px;
+    font-size: 18px;
+    border-radius: 3px;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+
+#login_button:hover{
+    transform: scale(1.05);
+}
+
+
+
+
+#login_form.dark {
+  color: var(--color-ligth-50);
+  background: var(--color-dark-100);
+}
+
+/* inputs no modo dark */
+#login_form.dark .input_field input{
+  color: var(--color-ligth-50);
+}
+
+
+
+
+@keyframes dark-to-ligth{
+    0%{
+        background: var(--color-dark-100);
+    }
+    100%{
+        background-color: var(--color-ligth-50);
+    }
+}
+@keyframes ligth-to-dark{
+    0%{
+        background: var(--color-ligth-50);
+    }
+    100%{
+        background: var(--color-dark-100);
+    }
+}
