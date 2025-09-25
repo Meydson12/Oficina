@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double+Ink:wght@100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+
 
 * {
     margin: 0;
@@ -21,11 +23,18 @@ body {
 
 }
 
+/*ESTILIZAÇÃO DO NAVBAR*/
+.navbar{
+    border-bottom: 1px solid white;
+    height: 60px;
+}
+
 .max-width{
     max-width: 1300px;
     padding: 0 5px;
     margin: auto;
 }
+
 
 .navbar .logo a{
     flex: 1;
@@ -47,14 +56,13 @@ body {
   gap: 100px;
   list-style: none;
 }
-.navbar .menu li{
-    font-size: 40px;
-}
+
 
 .navbar .menu li a {
   color: #fff;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 25px;
+  font-family: "Fjalla one";
 }
 .navbar .menu li a:hover {
   color: #a855f7;
@@ -67,6 +75,8 @@ body {
     cursor: pointer;
     display: none;
 }
+
+
 
 @media (max-width:950px){
     .menu-btn{
@@ -99,4 +109,136 @@ body {
         font-size: 25px;
 
     }
+}
+
+ /*ESTILIZAÇÃO DO TOPO*/
+
+
+section{
+    padding: 50px 0px;
+}
+
+.topo{
+    color: var(--site-color);
+    display: flex;
+    background: url(../imagens/civic.jpg) no-repeat center;
+    background-size: cover;
+    background-attachment: scroll;
+    height: 100vh;
+    min-height: 500px;
+}
+.topo .max-width {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.topo-conteudo{
+    display: flex;
+    flex-direction: column;
+    font-size: 60px;
+    text-align: left;
+    align-items: flex-start;
+    padding-left: 20px;
+}
+
+.texto-1 {
+    font-size: 80px;
+    font-weight: 900;
+    color: #8ddb0e;
+    text-shadow:2px 2px 4px rgba(0,0,0,0.5);
+    margin-bottom: 10px;
+    animation: fadeIn 1s ease-in; /* 🔥 ANIMAÇÃO */
+}
+
+.texto-2 {
+    font-size: 40px;
+    color: #8ddb0e;
+    text-shadow:2px 2px 4px rgba(0,0,0,0.5);
+    font-weight: 300;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.texto-3 {
+    font-size: 30px;
+    color: #ca9191;
+    background: rgba(247, 247, 247, 0.1);
+    padding: 12px 20px;
+    border-radius: 8px;
+    border-left: 4px solid #03043b;
+    font-weight: 500;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+
+
+
+
+
+@media (max-width:950px){
+    /*ESTILIZAÇÃO DO NAVBAR*/
+    .menu-btn{
+        display: block;
+        z-index: 999;
+    }
+    .navbar .menu{
+        background-color: var(--main-color);
+        position: fixed;
+        height: 100vh;
+        width: 100%;
+        left: -100%;
+        top: 0;
+        text-align: center;
+        padding-top: 80px;
+    }
+
+    #menu-site.active{
+        left: 0;
+    }
+
+    .navbar .menu li {
+        display: block;
+
+    }
+
+    .navbar .menu li a {
+        display: inline-block;
+        margin: 13px 0;
+        font-size: 25px;
+
+    }
+
+
+    /*ESTILIZAÇÃO DO TOPO*/
+    section{
+        padding: 20px 0px;
+    }
+    .texto-1 {
+        font-size: 50px;
+    }
+    
+    .texto-2 {
+        font-size: 22px;
+    }
+    
+    .texto-3 {
+        font-size: 18px;
+    }
+}
+
+
+
+
+@media (max-width: 690px){
+    
+
 }

@@ -32,8 +32,20 @@
         </div>
     </nav>
 
+    <section class="topo">
+        <div class="max-width">
+            <div class="topo-conteudo">
+                <div class="texto-1">Mecânica GenAuto</div>
+                <div class="texto-2">Especializada no seu problema</div>
+                <div class="texto-3">A gente sabe sim resolver o seu problema</div>
+            </div>
+        </div>
+    </section>
 
-    <script src="js/login.js"></script>
+
+
+
+    <script src="js/dashboard.js"></script>
 </body>
 
 </html>
