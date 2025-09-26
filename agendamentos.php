@@ -33,12 +33,6 @@ $agendamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
-    <?php if (isset($_GET['sucesso'])): ?>
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Sucesso!</strong> Agendamento atualizado com êxito.
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        </div>
-    <?php endif; ?>
     <!-- Navbar -->
     <?php include 'includes/navbar.php'; ?>
 
@@ -50,50 +44,27 @@ $agendamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <!-- Main Content -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="margin-top: 80px;">
 
-
-                <!-- Alerta atualização-->
+                <!-- alerta Atualizar -->
                 <?php if (isset($_GET['sucesso'])): ?>
                     <?php if ($_GET['sucesso'] == '1'): ?>
                         <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
                             <strong>✅ Sucesso!</strong> Agendamento atualizado com êxito.
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                         </div>
-
-                        <!-- Alerta cancelado-->
+                        <!-- alerta cancelar -->
                     <?php elseif ($_GET['sucesso'] == 'cancelado'): ?>
                         <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
                             <strong>⚠️ Sucesso!</strong> Agendamento cancelado com êxito.
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                         </div>
+                        <!-- alerta de concluido -->
+                    <?php elseif ($_GET['sucesso'] == 'concluido'): ?>
+                        <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                            <strong>✅ Sucesso!</strong> Serviço marcado como concluído.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
                     <?php endif; ?>
                 <?php endif; ?>
-
-                <?php if (isset($_GET['erro'])): ?>
-                    <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
-                        <strong>❌ Erro:
-                            <?php
-                            switch ($_GET['erro']) {
-                                case 'cancelamento':
-                                    echo 'Falha ao cancelar agendamento';
-                                    break;
-                                case 'id_nao_informado':
-                                    echo 'ID do agendamento não informado';
-                                    break;
-                                case 'banco_dados':
-                                    echo 'Erro no banco de dados';
-                                    break;
-                                default:
-                                    echo 'Erro desconhecido';
-                            }
-                            ?>
-                        </strong>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                    </div>
-                <?php endif; ?>
-
-
-
-
 
                 <!-- Filtros -->
                 <div class="card mb-4">
@@ -110,6 +81,7 @@ $agendamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     <option value="agendado">Agendado</option>
                                     <option value="em_andamento">Em Andamento</option>
                                     <option value="concluido">Concluído</option>
+                                    <option value="cancelado">Cancelado</option>
                                 </select>
                             </div>
                             <div class="col-md-3">
@@ -127,6 +99,8 @@ $agendamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </form>
                     </div>
                 </div>
+
+
 
                 <!-- Tabela de Agendamentos -->
                 <div class="card">
@@ -188,26 +162,39 @@ $agendamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                 </td>
 
                                                 <td>
-                                                    <!-- Tabela de Agendamentos -->
                                                     <div class="btn-group btn-group-sm">
+                                                        <!-- Botão Editar -->
                                                         <a href="agendamentos-editar.php?id=<?php echo $agendamento['id']; ?>"
                                                             class="btn btn-outline-primary" title="Editar">
                                                             <i class="bi bi-pencil"></i>
                                                         </a>
-                                                        <!-- Tabela de exclusão -->
-                                                        <?php if ($agendamento['status'] != 'cancelado'): ?>
+
+                                                        <!-- Botão Concluir (aparece para agendado/em_andamento) -->
+                                                        <?php if ($agendamento['status'] == 'agendado' || $agendamento['status'] == 'em_andamento'): ?>
+                                                            <a href="agendamentos-concluir.php?id=<?php echo $agendamento['id']; ?>"
+                                                                class="btn btn-outline-success"
+                                                                onclick="return confirm('Marcar agendamento de <?php echo htmlspecialchars($agendamento['cliente_nome']); ?> como concluído?')"
+                                                                title="Concluir Serviço">
+                                                                <i class="bi bi-check-circle"></i>
+                                                            </a>
+                                                        <?php endif; ?>
+
+                                                        <!-- Botão Cancelar (aparece para agendado/em_andamento) -->
+                                                        <?php if ($agendamento['status'] != 'cancelado' && $agendamento['status'] != 'concluido'): ?>
                                                             <a href="agendamentos-cancelar.php?id=<?php echo $agendamento['id']; ?>"
-                                                                class="btn btn-sm btn-outline-danger"
-                                                                onclick="return confirm('Tem certeza que deseja cancelar o agendamento de <?php echo htmlspecialchars($agendamento['cliente_nome']); ?>?')">
+                                                                class="btn btn-outline-danger"
+                                                                onclick="return confirm('Cancelar agendamento de <?php echo htmlspecialchars($agendamento['cliente_nome']); ?>?')"
+                                                                title="Cancelar">
                                                                 <i class="bi bi-x-circle"></i>
                                                             </a>
-                                                        <?php else: ?>
+                                                        <?php endif; ?>
+
+                                                        <!-- Status finalizados -->
+                                                        <?php if ($agendamento['status'] == 'concluido'): ?>
+                                                            <span class="badge bg-success">Concluído</span>
+                                                        <?php elseif ($agendamento['status'] == 'cancelado'): ?>
                                                             <span class="badge bg-secondary">Cancelado</span>
                                                         <?php endif; ?>
-                                                        <!-- fim da exclusão -->
-
-
-
                                                     </div>
                                                 </td>
                                             </tr>
@@ -322,7 +309,7 @@ $agendamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </html>
 
 <?php
-// Função para cor do badge baseado no status
+
 function getBadgeColor($status)
 {
     switch ($status) {
@@ -338,4 +325,5 @@ function getBadgeColor($status)
             return 'secondary';
     }
 }
+?>
 ?>
