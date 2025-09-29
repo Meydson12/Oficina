@@ -1,0 +1,100 @@
+.recibo-elegante {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.recibo-elegante .header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2.5rem;
+    position: relative;
+}
+
+.recibo-elegante .header::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: white;
+    border-radius: 50% 50% 0 0;
+}
+
+.recibo-elegante .content {
+    padding: 3rem 2.5rem 2.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.recibo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.recibo-item:last-child {
+    border-bottom: none;
+}
+
+/* 🔽 CSS PARA IMPRESSÃO 🔽 */
+@media print {
+
+    /* Esconder tudo exceto o recibo */
+    body * {
+        visibility: hidden;
+    }
+
+    /* Mostrar apenas o recibo elegante */
+    .recibo-elegante,
+    .recibo-elegante * {
+        visibility: visible;
+    }
+
+    /* Posicionar o recibo no topo da página */
+    .recibo-elegante {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    /* Ajustes específicos para impressão */
+    .recibo-elegante .header {
+        background: #667eea !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .recibo-elegante .content {
+        padding: 2rem;
+    }
+
+    /* Esconder botões e elementos não necessários na impressão */
+    .btn,
+    .d-print-none,
+    nav,
+    .sidebar,
+    .border-bottom {
+        display: none !important;
+    }
+
+    /* Garantir que cores sejam impressas */
+    .bg-success,
+    .bg-warning,
+    .bg-info,
+    .bg-danger {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}

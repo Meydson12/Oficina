@@ -29,15 +29,12 @@ $paginaTitulo = "Novo Agendamento";
 </head>
 
 <body>
-    <!-- Navbar -->
     <?php include '../includes/navbar.php'; ?>
 
     <div class="container-fluid">
         <div class="row">
-            <!-- Sidebar -->
             <?php include '../includes/sidebar.php'; ?>
 
-            <!-- Main Content -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">
@@ -50,7 +47,9 @@ $paginaTitulo = "Novo Agendamento";
                     </div>
                 </div>
 
-                <!-- Formulário -->
+
+
+
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title mb-0">
@@ -166,11 +165,9 @@ $paginaTitulo = "Novo Agendamento";
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // Configurar data/hora padrão para agora + 1 hora
         document.addEventListener('DOMContentLoaded', function() {
             const now = new Date();
             now.setHours(now.getHours() + 1);
@@ -180,7 +177,6 @@ $paginaTitulo = "Novo Agendamento";
             const dateTimeLocal = now.toISOString().slice(0, 16);
             document.getElementById('data_agendamento').value = dateTimeLocal;
 
-            // Máscara de telefone
             document.getElementById('telefone').addEventListener('input', function(e) {
                 let value = e.target.value.replace(/\D/g, '');
                 if (value.length > 11) value = value.slice(0, 11);

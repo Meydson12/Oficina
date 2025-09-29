@@ -17,8 +17,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="estoque.php">
-                    <i class="bi bi-box-seam"></i> Estoque
+                <a class="nav-link" href="produtos.php">
+                    <i class="bi bi-box-seam"></i> Produtos & Estoque
                 </a>
             </li>
         </ul>

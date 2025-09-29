@@ -73,7 +73,7 @@ $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <h2>
                         <i class="bi bi-box-seam"></i> Produtos e Serviços
                     </h2>
-                    <a href="produtos-cadastrar.php" class="btn btn-success btn-sm">
+                    <a href="produtos/produtos-cadastrar.php" class="btn btn-success btn-sm">
                         <i class="bi bi-plus-circle"></i> Novo Produto/Serviço
                     </a>
                 </div>
@@ -136,11 +136,11 @@ $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                 </td>
                                                 <td>
                                                     <div class="btn-group btn-group-sm">
-                                                        <a href="produtos-editar.php?id=<?php echo $produto['id']; ?>"
+                                                        <a href="produtos/produtos-editar.php?id=<?php echo $produto['id']; ?>"
                                                             class="btn btn-outline-primary" title="Editar">
                                                             <i class="bi bi-pencil"></i>
                                                         </a>
-                                                        <a href="produtos-excluir.php?id=<?php echo $produto['id']; ?>"
+                                                        <a href="produtos/produtos-excluir.php?id=<?php echo $produto['id']; ?>"
                                                             class="btn btn-outline-danger"
                                                             onclick="return confirm('Tem certeza que deseja excluir <?php echo htmlspecialchars($produto['nome']); ?>?')"
                                                             title="Excluir">
@@ -158,7 +158,7 @@ $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <i class="bi bi-box display-1 text-muted"></i>
                                 <h4 class="text-muted">Nenhum produto/serviço cadastrado</h4>
                                 <p class="text-muted">Clique no botão abaixo para cadastrar o primeiro item.</p>
-                                <a href="produtos-cadastrar.php" class="btn btn-primary btn-lg mt-3">
+                                <a href="produtos/produtos-cadastrar.php" class="btn btn-primary btn-lg mt-3">
                                     <i class="bi bi-plus-circle"></i> Cadastrar Primeiro Produto
                                 </a>
                             </div>
