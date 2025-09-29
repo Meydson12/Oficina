@@ -1,9 +1,8 @@
 <?php
 // editar.php
-require_once 'config/database.php';
-require_once 'config/funcoes.php';
+require_once '../config/database.php';
+require_once '../config/funcoes.php';
 
-// Criar instância da Database e obter conexão
 $database = new Database();
 $pdo = $database->getConnection();
 
@@ -17,13 +16,11 @@ if (isset($_GET['id'])) {
 }
 
 if (!$agendamento) {
-    header("Location: agendamentos.php");
+    header("Location: ../agendamentos.php");
     exit;
 }
 
-// Processar atualização
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Usar isset() para verificar se os campos existem
     $cliente_nome = isset($_POST['cliente_nome']) ? $_POST['cliente_nome'] : '';
     $veiculo = isset($_POST['veiculo']) ? $_POST['veiculo'] : '';
     $placa = isset($_POST['placa']) ? $_POST['placa'] : '';
@@ -33,13 +30,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $telefone = isset($_POST['telefone']) ? $_POST['telefone'] : '';
     $observacoes = isset($_POST['observacoes']) ? $_POST['observacoes'] : '';
 
-    // Converter valor_estimado para NULL se estiver vazio
     if ($valor_estimado === '') {
         $valor_estimado = null;
     }
 
     try {
-        // UPDATE com todas as colunas corretas
         $stmt = $pdo->prepare("UPDATE agendamentos SET 
             cliente_nome = ?, 
             telefone = ?,
@@ -52,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             WHERE id = ?");
 
         if ($stmt->execute([$cliente_nome, $telefone, $veiculo, $placa, $servico, $data_agendamento, $valor_estimado, $observacoes, $id])) {
-    header("Location: agendamentos.php?sucesso=editado");  // Mude para 'editado'
+    header("Location: ../agendamentos.php?sucesso=editado");
     exit;
         } else {
             $erro = "Erro ao atualizar agendamento.";
@@ -70,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Agendamento - GenAuto</title>
-    <link rel="icon" href="imagens/engrenagem.png" type="image/x-icon">
+    <link rel="icon" href="../imagens/engrenagem.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 </head>

@@ -1,9 +1,8 @@
 <?php
 session_start();
-require_once 'config/database.php';
-require_once 'config/funcoes.php';
+require_once '../config/database.php';
+require_once '../config/funcoes.php';
 
-// 🔐 Verificar login
 if (!isset($_SESSION['usuario_id'])) {
     header("Location: index.php");
     exit;
@@ -21,22 +20,22 @@ $paginaTitulo = "Novo Agendamento";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="imagens/engrenagem.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../imagens/engrenagem.png" type="image/x-icon">
     <title>GenAuto - cadastrar <?php echo $paginaTitulo; ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
     
 </head>
 
 <body>
     <!-- Navbar -->
-    <?php include 'includes/navbar.php'; ?>
+    <?php include '../includes/navbar.php'; ?>
 
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
-            <?php include 'includes/sidebar.php'; ?>
+            <?php include '../includes/sidebar.php'; ?>
 
             <!-- Main Content -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -45,7 +44,7 @@ $paginaTitulo = "Novo Agendamento";
                         <i class="bi bi-plus-circle"></i> Novo Agendamento
                     </h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
-                        <a href="agendamentos.php" class="btn btn-outline-secondary">
+                        <a href="../agendamentos.php" class="btn btn-outline-secondary">
                             <i class="bi bi-arrow-left"></i> Voltar para Lista
                         </a>
                     </div>
@@ -143,7 +142,7 @@ $paginaTitulo = "Novo Agendamento";
 
                             <!-- Botões -->
                             <div class="d-flex gap-2 justify-content-end">
-                                <a href="agendamentos.php" class="btn btn-secondary">
+                                <a href="../agendamentos.php" class="btn btn-secondary">
                                     <i class="bi bi-x-circle"></i> Cancelar
                                 </a>
                                 <button type="submit" class="btn btn-success">

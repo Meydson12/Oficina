@@ -1,7 +1,7 @@
 <?php
 // agendamentos-concluir.php
-require_once 'config/database.php';
-require_once 'config/funcoes.php';
+require_once '../config/database.php';
+require_once '../config/funcoes.php';
 
 // Verificar se o ID foi passado
 if (!isset($_GET['id'])) {

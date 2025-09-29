@@ -42,7 +42,7 @@ $agendamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <?php include 'includes/sidebar.php'; ?>
 
             <!-- Main Content -->
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="margin-top: 80px;">
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="margin-top: 40px;">
 
                 <!-- alerta Atualizar -->
                 <?php if (isset($_GET['sucesso'])): ?>
@@ -110,7 +110,7 @@ $agendamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <span class="badge bg-primary ms-2"><?php echo count($agendamentos); ?></span>
                         </h5>
 
-                        <a href="agendamentos-cadastrar.php" class="btn btn-success btn-sm py-1">
+                        <a href="agendamentos/agendamentos-cadastrar.php" class="btn btn-success btn-sm py-1">
                             <i class="bi bi-plus-circle me-1"></i> Novo
                         </a>
                     </div>
@@ -155,7 +155,7 @@ $agendamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                 <td>
                                                     <span class="badge bg-<?php echo getBadgeColor($agendamento['status']); ?>">
                                                         <?php echo ucfirst($agendamento['status']); ?>
-                                                    </span>
+             z                                       </span>
                                                 </td>
                                                 <td>
                                                     <strong>R$ <?php echo number_format($agendamento['valor_estimado'], 2, ',', '.'); ?></strong>
@@ -164,14 +164,14 @@ $agendamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                 <td>
                                                     <div class="btn-group btn-group-sm">
                                                         <!-- Botão Editar -->
-                                                        <a href="agendamentos-editar.php?id=<?php echo $agendamento['id']; ?>"
+                                                        <a href="agendamentos/agendamentos-editar.php?id=<?php echo $agendamento['id']; ?>"
                                                             class="btn btn-outline-primary" title="Editar">
                                                             <i class="bi bi-pencil"></i>
                                                         </a>
 
                                                         <!-- Botão Concluir (aparece para agendado/em_andamento) -->
                                                         <?php if ($agendamento['status'] == 'agendado' || $agendamento['status'] == 'em_andamento'): ?>
-                                                            <a href="agendamentos-concluir.php?id=<?php echo $agendamento['id']; ?>"
+                                                            <a href="agendametos/agendamentos-concluir.php?id=<?php echo $agendamento['id']; ?>"
                                                                 class="btn btn-outline-success"
                                                                 onclick="return confirm('Marcar agendamento de <?php echo htmlspecialchars($agendamento['cliente_nome']); ?> como concluído?')"
                                                                 title="Concluir Serviço">
@@ -181,7 +181,7 @@ $agendamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                                                         <!-- Botão Cancelar (aparece para agendado/em_andamento) -->
                                                         <?php if ($agendamento['status'] != 'cancelado' && $agendamento['status'] != 'concluido'): ?>
-                                                            <a href="agendamentos-cancelar.php?id=<?php echo $agendamento['id']; ?>"
+                                                            <a href="agendamentos/agendamentos-cancelar.php?id=<?php echo $agendamento['id']; ?>"
                                                                 class="btn btn-outline-danger"
                                                                 onclick="return confirm('Cancelar agendamento de <?php echo htmlspecialchars($agendamento['cliente_nome']); ?>?')"
                                                                 title="Cancelar">
