@@ -96,7 +96,7 @@ $itens = $stmt_itens->fetchAll(PDO::FETCH_ASSOC);
                         <i class="bi bi-receipt"></i> Detalhes da Venda
                     </h2>
                     <div>
-                        <a href="vendas.php" class="btn btn-secondary btn-sm">
+                        <a href="../vendas.php" class="btn btn-secondary btn-sm">
                             <i class="bi bi-arrow-left"></i> Voltar
                         </a>
                         <button onclick="imprimirRecibo()" class="btn btn-primary btn-sm ms-2">
@@ -179,6 +179,15 @@ $itens = $stmt_itens->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
 
+
+                <!-- QRcode de pagamento -->
+                <!-- Substitua a seção QR Code por esta -->
+                <?php
+                if ($venda['status'] == 'pendente') {
+                    exibirInstrucoesPagamento($venda['total'], $venda_id);
+                }
+                ?>
+
                 <div class="card mt-4 d-print-none">
                     <div class="card-header">
                         <h6 class="card-title mb-0">
@@ -205,7 +214,8 @@ $itens = $stmt_itens->fetchAll(PDO::FETCH_ASSOC);
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-                            <script src="../js/imprimir.js"></script>
+<script src="../js/imprimir.js"></script>
+
 </html>
 
 <?php
